@@ -102,7 +102,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'admin'], function ()
     Route::post('center/editService', 'Admin\CenterController@editService')->name('center.editService');
 
     Route::post('center/set-session', 'Admin\CenterController@setSession')->name('center.setSession');
-
+    
     Route::post('center/activate-center', 'Admin\CenterController@activateCenter')->name('center.activateCenter');
 
     Route::post('center/delete-card', 'Admin\CenterController@deleteService')->name('center.delete_card');
