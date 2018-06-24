@@ -39,16 +39,42 @@ class UsersController extends Controller
 
     public function getTeachers(Request $request)
     {
-        $users = User::with('roles')->where('is_user',1)->where('is_teacher',1)->where('is_active',1)->get();
+        $users = User::where('is_user',1)->where('is_teacher',1)->where('is_active',1)->get();
         $cities = City::all();
         return view('admin.users.teachers', compact('users' , 'cities'));
     }
 
     public function getStudents(Request $request)
     {
-        $users = User::with('roles')->where('is_user',1)->where('is_teacher',0)->where('is_active',1)->get();
-        
-        return view('admin.users.students', compact('users'));
+        $users = User::where('is_user',1)->where('is_teacher',0)->where('is_active',1)->get();
+        $cities = City::all();
+        return view('admin.users.students', compact('users' , 'cities'));
+    }
+
+    public function searchStudents(Request $request){
+        $query = User::where('is_user',1)->where('is_teacher',0)->where('is_active',1)->select();
+        if($request->city):
+            $query->where('city_id',$request->city);
+        endif;
+
+        $users = $query->get();
+        $cities = City::all();
+        return view('admin.users.students', compact('users' , 'cities'));
+    }
+
+    public function searchTeachers(Request $request){
+        $query = User::where('is_user',1)->where('is_teacher',1)->where('is_active',1)->select();
+        if($request->city):
+            $query->where('city_id',$request->city);
+        endif;
+
+        $users = $query->get();
+        $cities = City::all();
+        return view('admin.users.teachers', compact('users' , 'cities'));
+    }
+
+    public function searchUsers(Request $request){
+
     }
 
 

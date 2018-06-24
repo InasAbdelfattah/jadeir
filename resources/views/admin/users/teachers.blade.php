@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="row">
-                    <form action="{{route('orders.search')}}" method="get">
+                    <form action="{{route('teachers.search')}}" method="get">
                         {{csrf_field()}}
 
                         <div class="col-lg-3">
@@ -36,14 +36,13 @@
 
                         <div class="col-lg-3">
                            
-                            <input type="text" name="email" class="form-control" placeholder="البريد الإلكترونى"/>
+                            <input type="email" name="email" class="form-control" placeholder="البريد الإلكترونى"/>
                             
                         </div>
 
                         <div class="col-lg-2">
                            
-                            <!--<input type="number" name="order_id" class="form-control" placeholder="رقم الطلب"/>-->
-                            <select name="card_id" class="form-control">
+                            <select name="city" class="form-control">
                                 <option value="">اسم المدينة</option>
                                 @forelse($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -56,12 +55,12 @@
                         
                         <div class="col-lg-2">
                               
-                            <select name="status" class="form-control">
+                            <select name="is_active" class="form-control">
                                 <option value="" disabled selected>حالة المعلم</option>
-                                    <option value="0">طلب انضمام</option>
+                                    <option value="3">طلب انضمام</option>
                                     <option value="1">مقبول</option>
                                     <option value="2">مرفوض</option>
-                                    <option value="3">معطل</option>
+                                    <option value="0">معطل</option>
                             </select>
                             
                         </div>

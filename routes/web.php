@@ -64,6 +64,9 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'admin'], function ()
     
     Route::get('profile/edit/{id}', ['uses' => 'Admin\UsersController@editProfile', 'as' => 'users.editProfile']);
 
+    Route::get('serarch-students', ['uses' => 'Admin\UsersController@searchStudents','as' => 'students.search']);
+    Route::get('serarch-teachers', ['uses' => 'Admin\UsersController@searchTeachers','as' => 'teachers.search']);
+    Route::get('serarch', ['uses' => 'Admin\UsersController@searchUsers','as' => 'users.search']);
     Route::get('teachers', ['uses' => 'Admin\UsersController@getTeachers','as' => 'users.teachers']);
     Route::get('students', ['uses' => 'Admin\UsersController@getStudents','as' => 'users.students']);
     

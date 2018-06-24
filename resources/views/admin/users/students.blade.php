@@ -24,26 +24,26 @@
                     </div>
                 </div>
 
-                                <div class="row">
-                    <form action="{{route('orders.search')}}" method="get">
+                <div class="row">
+                    <form action="{{route('students.search')}}" method="get">
                         {{csrf_field()}}
 
                         <div class="col-lg-3">
                            
-                            <input type="text" name="name" class="form-control" placeholder="اسم المعلم"/>
+                            <input type="text" name="name" class="form-control" placeholder="اسم الطالب"/>
                             
                         </div>
 
                         <div class="col-lg-3">
                            
-                            <input type="text" name="email" class="form-control" placeholder="البريد الإلكترونى"/>
+                            <input type="text" name="phone" class="form-control" placeholder="رقم الجوال"/>
                             
                         </div>
 
                         <div class="col-lg-2">
                            
                             <!--<input type="number" name="order_id" class="form-control" placeholder="رقم الطلب"/>-->
-                            <select name="card_id" class="form-control">
+                            <select name="city" class="form-control">
                                 <option value="">اسم المدينة</option>
                                 @forelse($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -56,12 +56,10 @@
                         
                         <div class="col-lg-2">
                               
-                            <select name="status" class="form-control">
-                                <option value="" disabled selected>حالة المعلم</option>
-                                    <option value="0">طلب انضمام</option>
-                                    <option value="1">مقبول</option>
-                                    <option value="2">مرفوض</option>
-                                    <option value="3">معطل</option>
+                            <select name="is_active" class="form-control">
+                                <option value="" disabled selected>حالة الطالب</option>
+                                    <option value="1">مفعل</option>
+                                    <option value="0">معطل</option>
                             </select>
                             
                         </div>
@@ -72,7 +70,6 @@
                         
                     </form>
                 </div>
-                
                 <div class="clearfix" style="margin-bottom: 20px;"></div>
                 <table id="datatable-fixed-header" class="table  table-striped">
                     <thead>
@@ -86,11 +83,10 @@
                                 <label></label>
                             </div> -->
                         </th>
-                        <th>اسم المعلم</th>
+                        <th>اسم الطالب</th>
                         <th>البريد الإلكتروني</th>
                         <th>رقم الجوال</th>
-                        <th>النوع</th>
-                        <th>تاريخ الطلب</th>
+                        <th>تاريخ الاشتراك</th>
                         <th>المدينة</th>
                         <th>العمليات المتاحة</th>
 
@@ -115,7 +111,6 @@
                             <td>{{ $user->email }}</td>
                             <!--<td>{{ $user->username  }}</td>-->
                             <td>{{ $user->phone }}</td>
-                            <td>{{ $user->gender ==0 ? 'female' : 'male' }}</td>
                             <td>{{ $user->created_at }}</td>                            
                             <td>{{ $user->city }}</td>                            
                             <td>
