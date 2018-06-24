@@ -103,8 +103,8 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span> مستخدمى التطبيق </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="ui-buttons.html">المعلمين</a></li>
-                                    <li><a href="ui-cards.html">الطلاب</a></li>
+                                    <li><a href="{{route('users.teachers')}}">المعلمين</a></li>
+                                    <li><a href="{{route('users.students')}}">الطلاب</a></li>
                                 </ul>
                             </li>
 

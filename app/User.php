@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function city()
     {
-        return $this->belongsTo(City::class ,'city_id');
+        return $this->belongsTo('App\Models\City' ,'city_id');
     }
 
 }

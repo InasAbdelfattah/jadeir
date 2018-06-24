@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Models\City;
 use Silber\Bouncer\Database\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -38,14 +39,14 @@ class UsersController extends Controller
 
     public function getTeachers(Request $request)
     {
-        $users = User::with('roles')->where('is_user',0)->where('is_active',1)->get();
-        
-        return view('admin.users.teachers', compact('users'));
+        $users = User::with('roles')->where('is_user',1)->where('is_teacher',1)->where('is_active',1)->get();
+        $cities = City::all();
+        return view('admin.users.teachers', compact('users' , 'cities'));
     }
 
     public function getStudents(Request $request)
     {
-        $users = User::with('roles')->where('is_user',0)->where('is_active',1)->get();
+        $users = User::with('roles')->where('is_user',1)->where('is_teacher',0)->where('is_active',1)->get();
         
         return view('admin.users.students', compact('users'));
     }

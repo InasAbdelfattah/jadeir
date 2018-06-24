@@ -24,71 +24,56 @@
                     </div>
                 </div>
 
-                <div class="row">
-                <form action="{{route('orders.search')}}" method="get">
-                    {{csrf_field()}}
+                                <div class="row">
+                    <form action="{{route('orders.search')}}" method="get">
+                        {{csrf_field()}}
 
-                    <div class="col-lg-3">
-                       
-                        <!--<input type="number" name="order_id" class="form-control" placeholder="رقم الطلب"/>-->
-                        <select name="card_id" class="form-control">
-                            <option value="">اسم البطاقة</option>
-                            @forelse($cards as $card)
-                                <option value="{{$card->id}}">{{$card->name}}</option>
-                            @empty
-                                <option value="">لا يوجد</option>
-                            @endforelse
-                        </select>
-                        
-                    </div>
-                    
-                    <div class="col-lg-3">
-                       
-                       
-                        <select name="status" class="form-control">
-                            <option value="" disabled selected>حالة الطلب</option>
-                                <option value="0">جديد</option>
-                                <option value="3">تجديد</option>
-                        </select>
-                        
-                    </div>
-                    <div class="row">
-                        @php 
-                            $old = date('Y-m-d', strtotime('-5days'));
-                            $new = date("Y-m-d"); 
-                        @endphp
-                    <div class="col-lg-3">
-                        
-                        
-                            <label>من</label>
-                            <input type="date" name="from" value="{{$old}}" class="form-control" placeholder="من : "/>
+                        <div class="col-lg-3">
+                           
+                            <input type="text" name="name" class="form-control" placeholder="اسم المعلم"/>
+                            
                         </div>
 
                         <div class="col-lg-3">
-                            <label>الى</label>
-                            <input type="date" name="to" value="{{$new}}" class="form-control" placeholder="الى"/>
+                           
+                            <input type="text" name="email" class="form-control" placeholder="البريد الإلكترونى"/>
+                            
                         </div>
-                    </div>
-                    <!--<div class="col-lg-3">-->
-                       
-                        <!-- <input type="text" name="card_type"/> -->
-                    <!--    <select name="card_type" class="form-control">-->
-                    <!--        <option value="">نوع البطاقة</option>-->
-                    <!--        @forelse($categories as $cat)-->
-                    <!--            <option value="{{$cat->id}}">{{$cat->name}}</option>-->
-                    <!--        @empty-->
-                    <!--            <option value="">لا يوجد</option>-->
-                    <!--        @endforelse-->
-                    <!--    </select>-->
-                    <!--</div>-->
-                    
-                    <div class="col-lg-3">
-                        <button type="submit" class="btn btn-primary">بحث</button>
-                    </div>
-                    
-                </form>
-                </div>
 
+                        <div class="col-lg-2">
+                           
+                            <!--<input type="number" name="order_id" class="form-control" placeholder="رقم الطلب"/>-->
+                            <select name="card_id" class="form-control">
+                                <option value="">اسم المدينة</option>
+                                @forelse($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @empty
+                                    <option value="">لا يوجد</option>
+                                @endforelse
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="col-lg-2">
+                              
+                            <select name="status" class="form-control">
+                                <option value="" disabled selected>حالة المعلم</option>
+                                    <option value="0">طلب انضمام</option>
+                                    <option value="1">مقبول</option>
+                                    <option value="2">مرفوض</option>
+                                    <option value="3">معطل</option>
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary">بحث</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                
+                <div class="clearfix" style="margin-bottom: 20px;"></div>
                 <table id="datatable-fixed-header" class="table  table-striped">
                     <thead>
                     <tr>
